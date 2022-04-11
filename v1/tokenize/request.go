@@ -51,5 +51,6 @@ type Response struct {
 	ExpiryMonth    int32        `json:"expiryMonth"`
 	ExpiryYear     int32        `json:"expiryYear"`
 	PFP            string       `json:"pfp"`
+	MFP            string       `json:"mfp"`
 	BinData        pcib.BinData `json:"binData"`
 }
