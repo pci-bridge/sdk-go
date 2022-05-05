@@ -13,7 +13,7 @@ type Response struct {
 	Last4          string       `json:"last4"`
 	ExpiryMonth    int32        `json:"expiryMonth"`
 	ExpiryYear     int32        `json:"expiryYear"`
-	NameOnCard     int32        `json:"nameOnCard"`
+	NameOnCard     string       `json:"nameOnCard"`
 	PFP            string       `json:"pfp"`
 	MFP            string       `json:"mfp"`
 	BinData        pcib.BinData `json:"binData"`
