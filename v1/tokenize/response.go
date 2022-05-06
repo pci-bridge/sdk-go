@@ -11,6 +11,7 @@ type Response struct {
 	EphemeralToken string       `json:"ephemeralToken"`
 	Bin            string       `json:"bin"`
 	Last4          string       `json:"last4"`
+	CardLength     int32        `json:"cardLength"`
 	ExpiryMonth    int32        `json:"expiryMonth"`
 	ExpiryYear     int32        `json:"expiryYear"`
 	NameOnCard     string       `json:"nameOnCard"`
