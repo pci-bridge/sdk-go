@@ -27,6 +27,9 @@ const (
 	ReTokenize               Permission = 8388608
 	ProxyRequest             Permission = 16777216
 	RefreshRequest           Permission = 33554432
-	SFTPRead                 Permission = 67108864
-	SFTPWrite                Permission = 134217728
+	RetrieveToken            Permission = 67108864
+	ListTokens               Permission = 134217728
+	UpdateEndpoint           Permission = 268435456
+	SFTPRead                 Permission = 536870912
+	SFTPWrite                Permission = 1073741824
 )
