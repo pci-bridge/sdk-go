@@ -1,0 +1,35 @@
+package sftp
+
+type FileType int32
+
+const (
+	FILE_TYPE_UNKNOWN FileType = 0
+	// Account Updater
+	FILE_TYPE_ACCOUNT_UPDATER_SUBMISSION      FileType = 1
+	FILE_TYPE_ACCOUNT_UPDATER_ACKNOWLEDGEMENT FileType = 2
+	FILE_TYPE_ACCOUNT_UPDATER_RESULT          FileType = 3
+	// Alerts
+	FILE_TYPE_FRAUD_ALERT      FileType = 10
+	FILE_TYPE_DISPUTE_ALERT    FileType = 11
+	FILE_TYPE_CHARGEBACK_ALERT FileType = 12
+	// Items
+	FILE_TYPE_FRAUD       FileType = 20
+	FILE_TYPE_DISPUTE     FileType = 21
+	FILE_TYPE_CHARGEBACK  FileType = 22
+	FILE_TYPE_TRANSACTION FileType = 23
+	// Reports
+	FILE_TYPE_GENERIC_REPORT     FileType = 30
+	FILE_TYPE_TRANSACTION_REPORT FileType = 31
+	FILE_TYPE_SETTLEMENT_REPORT  FileType = 32
+	FILE_TYPE_FEE_REPORT         FileType = 33
+	// Custom Types - handled by provider specific logic
+	FILE_TYPE_CUSTOM_1 FileType = 61
+	FILE_TYPE_CUSTOM_2 FileType = 62
+	FILE_TYPE_CUSTOM_3 FileType = 63
+	FILE_TYPE_CUSTOM_4 FileType = 64
+	FILE_TYPE_CUSTOM_5 FileType = 65
+	FILE_TYPE_CUSTOM_6 FileType = 66
+	FILE_TYPE_CUSTOM_7 FileType = 67
+	FILE_TYPE_CUSTOM_8 FileType = 68
+	FILE_TYPE_CUSTOM_9 FileType = 69
+)
