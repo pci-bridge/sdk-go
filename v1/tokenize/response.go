@@ -19,3 +19,13 @@ type Response struct {
 	MFP            string       `json:"mfp"`
 	BinData        pcib.BinData `json:"binData"`
 }
+
+type EphemeralResponse struct {
+	EphemeralToken string `json:"ephemeralToken"`
+}
+
+type WalletResponse struct {
+	Token      Response   `json:"token"`
+	WalletType WalletType `json:"walletType"`
+	WalletData []byte     `json:"walletData"`
+}
