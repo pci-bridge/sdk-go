@@ -3,7 +3,7 @@ package tokenize
 import (
 	"encoding/json"
 	"errors"
-	"github.com/pci-bridge/core/validate"
+	"github.com/pci-bridge/sdk-go/validate"
 )
 
 type Request struct {

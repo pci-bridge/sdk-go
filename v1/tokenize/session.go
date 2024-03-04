@@ -2,7 +2,7 @@ package tokenize
 
 import (
 	"errors"
-	"github.com/pci-bridge/core/validate"
+	"github.com/pci-bridge/sdk-go/validate"
 )
 
 type Dimension struct {
