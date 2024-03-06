@@ -21,8 +21,8 @@ type File struct {
 }
 
 type FileLine struct {
-	Data           string             `json:"data"`
-	InputTokenHVT  string             `json:"inputHvt"`
-	InputTokenBPID string             `json:"inputBpid"`
-	UpgradeToken   *tokenize.Response `json:"upgradeToken"`
+	Data           string                   `json:"data"`
+	InputTokenHVT  string                   `json:"inputHvt"`
+	InputTokenBPID string                   `json:"inputBpid"`
+	UpgradeToken   *tokenize.GlobalResponse `json:"upgradeToken"`
 }
