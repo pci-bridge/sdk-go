@@ -1,24 +1,24 @@
 package tokenize
 
 import (
-	"github.com/pci-bridge/core/pcibid"
-	"github.com/pci-bridge/core/pcibtesting"
+	"crypto/sha256"
+	"fmt"
+	"math/rand"
+	"strconv"
 	"testing"
 )
 
 func TestTokenizeRequestValidate(t *testing.T) {
-	pcibtesting.UnitTest()
-
 	r := &Request{}
 	expectValidationResult(t, r, false, "Expected validation to fail, with no required fields")
 
 	r.MHID = "MHID1234"
 	expectValidationResult(t, r, false, "Expected validation to fail")
 
-	r.RQID = pcibid.New()
+	r.RQID = fmt.Sprintf("%s", sha256.Sum256([]byte(strconv.Itoa(rand.Int()))))
 	expectValidationResult(t, r, false, "Expected validation to fail")
 
-	r.BPID = pcibid.New()
+	r.BPID = fmt.Sprintf("%x", rand.Int63())
 	expectValidationResult(t, r, false, "Expected validation to fail")
 
 	r.CardNumber = "4111111111111111"
@@ -36,12 +36,12 @@ func TestTokenizeRequestValidate(t *testing.T) {
 	// optional fields
 	r.TSID = "x"
 	expectValidationResult(t, r, false, "Expected validation to fail")
-	r.TSID = pcibid.New()
+	r.TSID = fmt.Sprintf("%s", sha256.Sum256([]byte(strconv.Itoa(rand.Int()))))
 	expectValidationResult(t, r, true, "Expected validation to pass")
 
 	r.CorrelationID = "x"
 	expectValidationResult(t, r, false, "Expected validation to fail")
-	r.CorrelationID = pcibid.New()
+	r.CorrelationID = fmt.Sprintf("%x", rand.Int63())
 	expectValidationResult(t, r, true, "Expected validation to pass")
 
 	r.CVV = "12"
@@ -51,18 +51,16 @@ func TestTokenizeRequestValidate(t *testing.T) {
 }
 
 func TestTokenizeWalletRequestValidate(t *testing.T) {
-	pcibtesting.UnitTest()
-
 	r := WalletRequest{}
 	expectValidationResult(t, r, false, "Expected validation to fail, with no required fields")
 
 	r.MHID = "MHID1234"
 	expectValidationResult(t, r, false, "Expected validation to fail")
 
-	r.RQID = pcibid.New()
+	r.RQID = fmt.Sprintf("%s", sha256.Sum256([]byte(strconv.Itoa(rand.Int()))))
 	expectValidationResult(t, r, false, "Expected validation to fail")
 
-	r.BPID = pcibid.New()
+	r.BPID = fmt.Sprintf("%x", rand.Int63())
 	expectValidationResult(t, r, false, "Expected validation to fail")
 
 	r.WalletType = ""
@@ -78,18 +76,16 @@ func TestTokenizeWalletRequestValidate(t *testing.T) {
 	// optional fields
 	r.TSID = "x"
 	expectValidationResult(t, r, false, "Expected validation to fail")
-	r.TSID = pcibid.New()
+	r.TSID = fmt.Sprintf("%s", sha256.Sum256([]byte(strconv.Itoa(rand.Int()))))
 	expectValidationResult(t, r, true, "Expected validation to pass")
 
 	r.CorrelationID = "x"
 	expectValidationResult(t, r, false, "Expected validation to fail")
-	r.CorrelationID = pcibid.New()
+	r.CorrelationID = fmt.Sprintf("%x", rand.Int63())
 	expectValidationResult(t, r, true, "Expected validation to pass")
 }
 
 func TestTokenizeSessionDataValidate(t *testing.T) {
-	pcibtesting.UnitTest()
-
 	if err := (SessionData{}).Validate(); err != nil {
 		t.Errorf("Expected validation to pass, with no required fields, got %s", err)
 	}
@@ -112,8 +108,6 @@ func TestTokenizeSessionDataValidate(t *testing.T) {
 }
 
 func TestTokenizeEphemeralRequestValidate(t *testing.T) {
-	pcibtesting.UnitTest()
-
 	r := EphemeralRequest{}
 	expectValidationResult(t, r, false, "Expected validation to fail, with no required fields")
 
@@ -122,6 +116,7 @@ func TestTokenizeEphemeralRequestValidate(t *testing.T) {
 
 	r.CVV = "12"
 	expectValidationResult(t, r, false, "Expected validation to fail")
+
 	r.CVV = "123"
 	expectValidationResult(t, r, true, "Expected validation to pass")
 }

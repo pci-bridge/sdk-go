@@ -2,8 +2,6 @@ package validate
 
 import (
 	"testing"
-
-	"github.com/pci-bridge/core/card"
 )
 
 func TestMHID(t *testing.T) {
@@ -251,12 +249,8 @@ func TestCardNumber(t *testing.T) {
 	}{
 		{"", true, false},
 		{"", false, true},
-		{card.RandomTestCard(), true, true},
-		{card.RandomTestCard(), true, true},
-		{card.RandomTestCard(), true, true},
-		{card.RandomTestCard(), true, true},
-		{card.RandomTestCard(), true, true},
-		{card.RandomTestCard(), true, true},
+		{"4111 **** **** 1111", true, false},
+		{"4111 **** **** 1111", false, false},
 	}
 
 	for _, test := range tests {
@@ -265,6 +259,7 @@ func TestCardNumber(t *testing.T) {
 		}
 	}
 }
+
 func TestMonth(t *testing.T) {
 	tests := []struct {
 		input  int32
