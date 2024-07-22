@@ -36,4 +36,6 @@ type WalletResponse struct {
 	Token      *GlobalResponse `json:"token"`
 	WalletType WalletType      `json:"walletType"`
 	WalletData []byte          `json:"walletData"`
+
+	TSID string `json:"tsid"`
 }
