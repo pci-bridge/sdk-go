@@ -33,7 +33,9 @@ type EphemeralResponse struct {
 }
 
 type WalletResponse struct {
-	Token      Response   `json:"token"`
-	WalletType WalletType `json:"walletType"`
-	WalletData []byte     `json:"walletData"`
+	Token      *GlobalResponse `json:"token"`
+	WalletType WalletType      `json:"walletType"`
+	WalletData []byte          `json:"walletData"`
+
+	TSID string `json:"tsid"`
 }
