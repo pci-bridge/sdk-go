@@ -16,10 +16,12 @@ const (
 type Funding string
 
 const (
-	FundingCredit  Funding = "credit"
-	FundingDebit   Funding = "debit"
-	FundingPrepaid Funding = "prepaid"
-	FundingUnknown Funding = "unknown"
+	FundingCredit        Funding = "credit"
+	FundingDebit         Funding = "debit"
+	FundingPrepaid       Funding = "prepaid"
+	FundingCharge        Funding = "charge"
+	FundingDeferredDebit Funding = "deferred-debit"
+	FundingUnknown       Funding = "unknown"
 )
 
 type CardProduct string
