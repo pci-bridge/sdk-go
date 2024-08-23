@@ -9,39 +9,38 @@ type BinData struct {
 	Issuer        Issuer  `json:"issuer"`
 	CleanBankName string  `json:"cleanBankName"`
 
-	BinLength  int `json:"binLength"`
-	CardLength int `json:"cardLength"`
+	BinLength  int `json:"binLength,omitempty"`
+	CardLength int `json:"cardLength,omitempty"`
 
-	ProductName string `json:"productName"`
-	ProductCode string `json:"productCode"`
-	ComboCard   string `json:"comboCard"`
+	ProductName string `json:"productName,omitempty"`
+	ProductCode string `json:"productCode,omitempty"`
+	ComboCard   string `json:"comboCard,omitempty"`
 
-	Currency string `json:"currency"`
+	Currency string `json:"currency,omitempty"`
 
-	Business bool `json:"business"`
-	Consumer bool `json:"consumer"`
+	Business bool  `json:"business"`
+	Consumer *bool `json:"consumer,omitempty"`
 
-	IsPan   bool `json:"isPan"`
-	IsToken bool `json:"isToken"`
+	IsPan   *bool `json:"isPan,omitempty"`
+	IsToken *bool `json:"isToken,omitempty"`
 
-	Length               int  `json:"length"`
-	PrePaid              bool `json:"prePaid"`
-	AccountUpdater       bool `json:"accountUpdater"`
-	SupportsTokenization bool `json:"supportsTokenization"`
-	Virtual              bool `json:"virtual"`
-	Ecommerce            bool `json:"ecommerce"`
-	Reloadable           bool `json:"reloadable"`
-	BillPayEnabled       bool `json:"billPayEnabled"`
-	Regulated            bool `json:"regulated"`
-	Alm                  bool `json:"alm"` // Account Level Management
-	DomesticOnly         bool `json:"domesticOnly"`
-	GamblingBlock        bool `json:"gamblingBlock"`
-	Level2               bool `json:"level2"`
-	Level3               bool `json:"level3"`
-	SharedBin            bool `json:"sharedBin"`
+	PrePaid              *bool `json:"prePaid,omitempty"`
+	AccountUpdater       *bool `json:"accountUpdater,omitempty"`
+	SupportsTokenization *bool `json:"supportsTokenization,omitempty"`
+	Virtual              *bool `json:"virtual,omitempty"`
+	Ecommerce            *bool `json:"ecommerce,omitempty"`
+	Reloadable           *bool `json:"reloadable,omitempty"`
+	BillPayEnabled       *bool `json:"billPayEnabled,omitempty"`
+	Regulated            *bool `json:"regulated,omitempty"`
+	Alm                  *bool `json:"alm,omitempty"` // Account Level Management
+	DomesticOnly         *bool `json:"domesticOnly,omitempty"`
+	GamblingBlock        *bool `json:"gamblingBlock,omitempty"`
+	Level2               *bool `json:"level2,omitempty"`
+	Level3               *bool `json:"level3,omitempty"`
+	SharedBin            *bool `json:"sharedBin,omitempty"`
 
-	AuthenticationRequired bool   `json:"authenticationRequired"`
-	AuthenticationName     string `json:"authenticationName"` // e.g. PSD2
+	AuthenticationRequired *bool   `json:"authenticationRequired,omitempty"`
+	AuthenticationName     *string `json:"authenticationName,omitempty"` // e.g. PSD2
 }
 
 type Issuer struct {
