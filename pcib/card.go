@@ -1,17 +1,39 @@
 package pcib
 
+import "strings"
+
 type Scheme string
 
 const (
-	SchemaVisa       Scheme = "visa"
-	SchemaMastercard Scheme = "mastercard"
-	SchemaAmex       Scheme = "amex"
-	SchemaDiscover   Scheme = "discover"
-	SchemaDiners     Scheme = "diners"
-	SchemaJCB        Scheme = "jcb"
-	SchemaUnionPay   Scheme = "unionpay"
-	SchemaUnknown    Scheme = "unknown"
+	SchemeVisa       Scheme = "visa"
+	SchemeMastercard Scheme = "mastercard"
+	SchemeAmex       Scheme = "amex"
+	SchemeDiscover   Scheme = "discover"
+	SchemeDiners     Scheme = "diners"
+	SchemeJCB        Scheme = "jcb"
+	SchemeUnionPay   Scheme = "unionpay"
+	SchemeUnknown    Scheme = "unknown"
 )
+
+func GetScheme(in string) Scheme {
+	switch strings.ToLower(in) {
+	case string(SchemeVisa):
+		return SchemeVisa
+	case string(SchemeMastercard), "master_card", "mc":
+		return SchemeMastercard
+	case string(SchemeAmex), "american_express", "americanexpress":
+		return SchemeAmex
+	case string(SchemeDiscover):
+		return SchemeDiscover
+	case string(SchemeDiners), "diners_club":
+		return SchemeDiners
+	case string(SchemeJCB), "japanese_credit_bank":
+		return SchemeJCB
+	case string(SchemeUnionPay), "union_pay", "china_union_pay":
+		return SchemeUnionPay
+	}
+	return SchemeUnknown
+}
 
 type Funding string
 
