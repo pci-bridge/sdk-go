@@ -25,7 +25,7 @@ func GetScheme(in string) Scheme {
 		return SchemeAmex
 	case string(SchemeDiscover):
 		return SchemeDiscover
-	case string(SchemeDiners), "diners_club":
+	case string(SchemeDiners), "diners_club", "dinersclub":
 		return SchemeDiners
 	case string(SchemeJCB), "japanese_credit_bank":
 		return SchemeJCB
