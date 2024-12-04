@@ -3,6 +3,7 @@ package tokenize
 import (
 	"encoding/json"
 	"errors"
+
 	"github.com/pci-bridge/sdk-go/validate"
 )
 
@@ -149,4 +150,50 @@ func (r WalletRequest) Validate() error {
 	}
 
 	return r.SessionData.Validate()
+}
+
+type UpgradeRequest struct {
+	MUID          string `json:"muid"`
+	RQID          string `json:"rqid"`
+	BPID          string `json:"bpid"`
+	CorrelationID string `json:"correlationId,omitempty"`
+
+	IpAddress   string `json:"ipAddress,omitempty"`
+	UserAgent   string `json:"userAgent,omitempty"`
+	FromHvt     string
+	ExpiryMonth int32
+	ExpiryYear  int32
+}
+
+func (r UpgradeRequest) Validate() error {
+	if !validate.MUID(r.MUID, true) {
+		return errors.New("invalid MUID provided")
+	}
+
+	if !validate.RQID(r.RQID, true) {
+		return errors.New("invalid RQID provided")
+	}
+
+	if !validate.BPID(r.BPID, true) {
+		return errors.New("invalid BPID provided")
+	}
+
+	if !validate.HVT(r.FromHvt, true) {
+		return errors.New("invalid HVT provided")
+	}
+
+	if !validate.Month(r.ExpiryMonth, true) {
+		return errors.New("invalid Expiry Month provided")
+	}
+
+	if !validate.Year(r.ExpiryYear, true) {
+		return errors.New("invalid Expiry Year provided")
+	}
+
+	// Optional Fields
+	if !validate.CorrelationID(r.CorrelationID, false) {
+		return errors.New("invalid CorrelationID provided")
+	}
+
+	return nil
 }

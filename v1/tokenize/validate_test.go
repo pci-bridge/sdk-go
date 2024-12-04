@@ -1,8 +1,9 @@
 package tokenize
 
 import (
-	"github.com/pci-bridge/sdk-go/validate"
 	"testing"
+
+	"github.com/pci-bridge/sdk-go/validate"
 )
 
 func expectValidationResult(t *testing.T, p validate.Validator, expect bool, message string) {
