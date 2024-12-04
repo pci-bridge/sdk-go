@@ -120,3 +120,32 @@ func TestTokenizeEphemeralRequestValidate(t *testing.T) {
 	r.CVV = "123"
 	expectValidationResult(t, r, true, "Expected validation to pass")
 }
+
+func TestTokenizeUpgradeRequestValidate(t *testing.T) {
+	r := &UpgradeRequest{}
+	expectValidationResult(t, r, false, "Expected validation to fail, with no required fields")
+
+	r.MUID = "01H3017QYNJ3B9RDAWRH0SBQ0K-M"
+	expectValidationResult(t, r, false, "Expected validation to fail")
+
+	r.FromHvt = "HVTxxxxxxxxxxxxxxxxxxxxxxxx"
+	expectValidationResult(t, r, false, "Expected validation to fail")
+
+	r.RQID = fmt.Sprintf("%s", sha256.Sum256([]byte(strconv.Itoa(rand.Int()))))
+	expectValidationResult(t, r, false, "Expected validation to fail")
+
+	r.BPID = fmt.Sprintf("%x", rand.Int63())
+	expectValidationResult(t, r, false, "Expected validation to fail")
+
+	r.ExpiryMonth = 1
+	expectValidationResult(t, r, false, "Expected validation to fail")
+
+	r.ExpiryYear = 2021
+	expectValidationResult(t, r, true, "Expected validation to pass")
+
+	// optional fields
+	r.CorrelationID = "x"
+	expectValidationResult(t, r, false, "Expected validation to fail")
+	r.CorrelationID = fmt.Sprintf("%x", rand.Int63())
+	expectValidationResult(t, r, true, "Expected validation to pass")
+}
