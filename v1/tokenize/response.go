@@ -14,7 +14,6 @@ type GlobalResponse struct {
 	PFP         string       `json:"pfp"`
 	MFP         string       `json:"mfp"`
 	BinData     pcib.BinData `json:"binData"`
-	RawBinData  []byte       `json:"rawBinData"`
 }
 
 type Response struct {
