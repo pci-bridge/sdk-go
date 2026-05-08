@@ -5,7 +5,7 @@ import "github.com/pci-bridge/sdk-go/pcib"
 type GlobalResponse struct {
 	TokenID     string       `json:"tokenId"`
 	Token       string       `json:"token"`
-	TokenExpiry int64        `json:"tokenExpiry"`
+	TokenExpiry uint64       `json:"tokenExpiry"`
 	Bin         string       `json:"bin"`
 	Last4       string       `json:"last4"`
 	CardLength  int32        `json:"cardLength"`
